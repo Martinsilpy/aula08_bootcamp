@@ -2,7 +2,6 @@ import pandas as pd
 import os 
 import glob
 
-# uma função de extract que lê e consolida os json
 
 def extrair_dados_e_consolidar(pasta: str) -> pd.DataFrame:
     arquivos_json = glob.glob(os.path.join(pasta, '*.json'))
@@ -10,13 +9,10 @@ def extrair_dados_e_consolidar(pasta: str) -> pd.DataFrame:
     df_total = pd.concat(df_list, ignore_index=True)
     return df_total
 
-# uma função que transform
 
 def calcular_kpi_de_total_de_vendas(df: pd.DataFrame) -> pd.DataFrame:
     df["Total"] = df["Quantidade"] * df["Venda"]
     return df
-
-# uma função que load
 
 
 def carregar_dados(df: pd.DataFrame, formato_saida: list):
